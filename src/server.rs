@@ -52,7 +52,9 @@ impl NotificationServer {
         connection.release_name("org.freedesktop.Notifications").unwrap();
         connection.register_name("org.freedesktop.Notifications", NameFlag::ReplaceExisting as u32).expect("Was not able to register name.");
         let mut objpath = ObjectPath::new(&connection, "/org/freedesktop/Notifications", false);
-        connection.register_object_path( "/org/freedesktop/Notifications").expect("could not register object path");
+        connection
+            .register_object_path( "/org/freedesktop/Notifications")
+            .expect("could not register object path");
 
         let server_interface = Interface::new(
             vec![
